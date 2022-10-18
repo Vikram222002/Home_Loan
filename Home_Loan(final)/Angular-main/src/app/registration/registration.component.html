@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html style="background-color:aqua;">
+
+<head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Montserrat", sans-serif
+        }
+        body{
+            background-color: black;
+            
+        }
+
+        .w3-row-padding img {
+            margin-bottom: 12px
+        }
+
+        /* Set the width of the sidebar to 120px */
+        .w3-sidebar {
+            width: 120px;
+            background: #222;
+        }
+
+        /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+        #main {
+            margin-left: 120px
+            
+        }
+
+        /* Remove margins from "page content" on small screens */
+        @media only screen and (max-width: 600px) {
+            #main {
+                margin-left: 0
+            }
+        }
+    </style>
+</head>
+
+<body class="body">
+
+    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center w3-black">
+        <!-- Avatar image in top left corner -->
+        <img src="../../assets/images/logo.jpg" style="width:100%">
+        <a routerLink="/userlogin" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-user w3-xxlarge"></i>
+            <p>USER LOGIN</p>
+        </a>
+        <a routerLink="/adminlogin" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-user teal-color w3-xxlarge"></i>
+            <p>AdMIN LOGIN</p>
+        </a>
+        <a routerLink="/calculator" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-calculator w3-xxlarge" aria-hidden="true"></i>
+            <p>CALCULATOR</p>
+        </a>
+        <a routerLink="/aboutus" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-user w3-xxlarge"></i>
+            <p>ABOUT US</p>
+        </a>
+        <a routerLink="/features" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-gear w3-xxlarge"></i>
+            <p>FEATURES</p>
+        </a>
+    </nav>
+
+    <!-- Page Content -->
+    <router-outlet>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="text-center">
+                            <u style="color: white;"><h1 style="color:white">Register Yourself</h1></u>
+                        </div>
+                        <div class="form">  
+                          
+                                <form #registrationform="ngForm" novalidate (ngSubmit)="onSubmit(registrationform)" >
+                                <div class="mb-3">
+                                    <label for="firstName">First Name *</label><br>
+                                    <input type="text" name="firstName" id="firstName" size="40" ngModel placeholder="Enter Your FirstName" #firstName="ngModel" maxlength="20" required minlength="4" ngModel  pattern="[A-Za-z. ,'&]+$">
+                                    <br/><span *ngIf="firstName.invalid && firstName.touched" style="color: red;">please enter your valid first name</span>
+                                </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="middleName">Middle Name</label><br>
+                                    <input type="text" name="middleName" id="middleName" size="40" ngModel placeholder="Enter Your MiddleName" #middleName="ngModel" maxlength="20" minlength="4" ngModel  pattern="[A-Za-z. ,'&]+$" >
+                                    <br/><span *ngIf="middleName.invalid " style="color: red;">please enter your valid Middle name</span>
+                                </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="lastName">Last Name *</label><br>
+                                     <input type="text" name="lastName" id="lastName" size="40" required placeholder="Enter LastName " #lastName="ngModel" maxlength="20" minlength="4" ngModel  pattern="[A-Za-z. ,'&]+$" >
+                                          <br/><span *ngIf="lastName.invalid && lastName.touched" style="color: red;">please enter your valid last name</span>
+                                     </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="email">Email ID *</label><br>
+                                    <input type="email" name="email" id="email" ngModel size="40" placeholder="Enter your Email" #email="ngModel" required>
+                                    <br/><span *ngIf="email.invalid && email.touched" style="color: red;">please enter your Email id</span>
+                               </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="password">Password *</label><br>
+                                     <input type="password" name="password" id="password" ngModel size="40" placeholder="Enter your passoword" #password="ngModel" required maxlength="20" minlength="6" ngModel  pattern="[A-Za-z0-9. ,:@!#$%&*]+$" >
+                                      <br/><span *ngIf="password.invalid && password.touched" style="color: red;">please enter ur password with minimun 6 characters</span>
+                                </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="cpassword">Confirm Password *</label><br>
+                                    <input type="password" name="cpassword" id="cpassword"ngModel size="40" placeholder="Enter Confirm passoword" #cpassword="ngModel" required ngModel ngValidateEqual="password" >
+                                    <br/><span *ngIf="cpassword.invalid && cpassword.touched" style="color: red;">please enter the matching password</span>
+                             </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="phoneNumber">Phone Number *</label><br>
+                                    <input type="text" name="phoneNumber" id="phoneNumber" size="40" ngModel placeholder="Enter Phone Number" #phoneNumber="ngModel" required maxlength="10" minlength="10" ngModel  pattern="[0-9]+$" >
+                                    <br/><span *ngIf="phoneNumber.invalid && phoneNumber.touched" style="color: red;">please enter valid phone number</span>
+                                    </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="dOB">Date Of Birth *</label><br>
+                                    <input type="date" name="dOB" ngModel id="dOB" size="40" #dOB="ngModel" required ngModel   >
+                                    <br/><span *ngIf="dOB.invalid && dOB.touched" style="color: red;">please enter valid date of birth</span>
+                                    </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="gender">Gender *:</label><br> Male
+                                    <input type="radio" name="gender" id="gender" value="Male" #gender="ngModel" required ngModel  >
+                                      Female
+                                         <input type="radio" name="gender" id="gender"  value="Female" #gender="ngModel" required ngModel   >
+                                          <br/><span *ngIf="gender.invalid && gender.touched" style="color: red;">select your Gender</span>
+                                        </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="nationality">Nationality *</label><br>
+                                    <input type="text" name="nationality" id="nationality" size="40" ngModel placeholder="Emter Your Nationality" #nationality="ngModel" required maxlength="10" minlength="5" ngModel  pattern="[A-Za-z. ,'&]+$" >
+                                    <br/><span *ngIf="nationality.invalid && nationality.touched" style="color: red;">please enter valid Nation</span>
+                                </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="aadharNo">Aadhar Number *</label><br>
+                                  <input type="text" name="aadharNo" id="aadharNo" size="40" ngModel placeholder="Enter Aadhar Number" #aadharNo="ngModel" required maxlength="12" minlength="12" ngModel  pattern="[0-9]+$" >
+                                     <br/><span *ngIf="aadharNo.invalid && aadharNo.touched" style="color: red;">please enter valid Aadhar Number</span>
+                                  </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="panNo">PAN Number *</label><br>
+                                    <input type="text" name="panNo" id="panNo" size="40" gModel placeholder="Enter Pan NUmber" #panNo="ngModel" maxlength="10" required minlength="10" ngModel  pattern="[a-zA-Z0-9]+$"  >
+                                    <br/><span *ngIf="aadharNo.invalid && aadharNo.touched" style="color: red;">please enter valid pan Number</span>
+                                   </div>
+                                <br>
+                               
+                                <div class="button">
+                                
+                                <button class="btn btn-primary" [disabled]="registrationform.invalid" >SIGN UP</button>
+                                <button class="btn btn-primary" type="button" onclick="history.back()"><a routerLink="userpage">Go back</a></button>
+                                
+                            </div>
+                            
+                            
+                            </form>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </router-outlet>
+
+</body>
+
+</html>

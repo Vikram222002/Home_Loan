@@ -1,0 +1,138 @@
+*
+{
+    margin:0;
+    padding:0;
+    text-align: center;
+    font-family: arial;
+    transition: 0.5s;
+}
+body{
+    width: 100vw;
+    height:100vh;
+    background:#c8e8e0;
+    padding-top:20px;
+    
+}
+h2{
+    color:#010a08;
+    font-weight:1000;
+    font-size:50px;
+    position:top bottom;
+    top:50%;
+    bottom:0%;
+    
+}
+.row{
+    padding-top:20px;
+    width:90%;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.circle1{
+    width:200px;
+    height:200px;
+    background:#10bcf4;
+    margin:10% auto;
+    border-radius:50%;
+    position:relative;
+}
+.circle2{
+    width:200px;
+    height:200px;
+    background:#f410e9;
+    margin:10% auto;
+    border-radius:50%;
+    position:relative;
+}
+.circle3{
+    width:200px;
+    height:200px;
+    background:#d2f410;
+    margin:10% auto;
+    border-radius:50%;
+    position:relative;
+}
+.circle4{
+    width:200px;
+    height:200px;
+    background:#f41041;
+    margin:10% auto;
+    border-radius:50%;
+    position:relative;
+}
+
+
+
+
+
+
+       
+.circle1 h3{
+    position:absolute;
+    font-size:25px;
+    top:50%;
+    transform:translateY(-50%);
+    text-align:center;
+    font-family:Arial;
+    color:#010a08;
+    font-style:italic;
+    text-transform:capitalize;
+}
+.circle2 h3{
+    position:absolute;
+    font-size:25px;
+    top:50%;
+    transform:translateY(-50%);
+    text-align:center;
+    font-family:Arial;
+    color:   #010a08;         ;
+    font-style:italic;
+    text-transform:capitalize;
+}
+.circle3 h3{
+    position:absolute;
+    font-size:25px;
+    top:50%;
+    transform:translateY(-50%);
+    text-align:center;
+    font-family:Arial;
+    color:#010a08;;
+    font-style:italic;
+    text-transform:capitalize;
+}
+.circle4 h3{
+    position:absolute;
+    font-size:25px;
+    top:50%;
+    transform:translateY(-50%);
+    text-align:center;
+    font-family:Arial;
+    color:#010a08;;
+    font-style:italic;
+    text-transform:capitalize;
+}
+a{
+    display:block;
+    height: 50px;
+    width:150px;
+    background:#010a08;
+    text-align:center;
+    top:80%;
+    bottom:5%;
+    right:0%;
+    left:0%;
+    font-size:xx-large;
+    position:center;
+    margin:auto;
+    place-items:center;
+    font-family:"poppins",sans-serif;
+    color:#fff
+}
+
+button
+{
+    color:red;
+    
+}

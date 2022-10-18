@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Montserrat", sans-serif
+        }
+        th{
+            border:1px solid black;
+        }
+        td{
+            border:1px solid black;
+        }
+        .w3-row-padding img {
+            margin-bottom: 12px
+        }
+        table{
+            background-color: linen;
+        }
+
+        /* Set the width of the sidebar to 120px */
+        .w3-sidebar {
+            width: 120px;
+            right: -1em;
+            background: #222;
+        }
+
+        /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+        #main {
+            margin-left: 120px
+        }
+
+        /* Remove margins from "page content" on small screens */
+        @media only screen and (max-width: 600px) {
+            #main {
+                margin-left: 0
+            }
+        }
+    </style>
+</head>
+
+<body class="w3-black" style="background-color: #f2aa4cff;">
+
+    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+       
+       
+        <!-- Avatar image in top left corner -->
+
+        <a routerLink="" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-sign-out w3-xxlarge"></i>
+            <p>LOGOUT</p>
+        </a>
+        
+        <button (click)="adminhome()" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-home w3-xxlarge"></i>
+            <p>HOME</p>
+        </button>
+            
+        <button (click)="customers()" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-balance-scale w3-xxlarge"></i>
+            <p>Customers List</p>
+        </button>
+        <button (click)="accounts()" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-bar-chart w3-xxlarge"></i>
+            <p>Accounts List</p>
+        </button>
+        
+        
+    </nav>
+
+   
+    <router-outlet>
+        <div class="container">
+            <div class="row">
+
+
+                               
+                            <table class="table table-bordered " >
+                          
+                                <tr><td colspan="4"><u style="color: rgb(12, 12, 13);"><h1 style="color:red; text-align: center;">Application List </h1></u>
+                                </td></tr>
+                                <tr class="text-uupercase" style="border-bottom:1pt solid black;">
+                                    <th >Name</th>
+                                    <th>ApplicationId</th>
+                                    <th>LoanAmount</th>
+                                    <th>Status</th>
+                            
+                                </tr>
+                                <tr *ngFor="let u of Applicationlist">
+                                    <td>{{u.firstName}} {{u.lastName}}</td> 
+                                    <td>{{u.applicationId}}</td>
+                                    <td>{{u.loanAmount}}</td>
+                                     <td><div *ngIf="u.loanStatus==status; else elseBlock"><button class="btn1" (click)="Approve(u.applicationId,u.loanAmount,u.customerId)"><i class="fa fa-check"></i></button>
+                                        <button class="btn" (click)="Reject(u.applicationId)"><i class="fa fa-close"></i></button></div>
+                                        <ng-template #elseBlock>
+                                            <div *ngIf="u.loanStatus=='Rejected'; else else2Block">Rejected</div><ng-template #else2Block>Approved</ng-template>
+                                        </ng-template>
+                                    </td>
+
+                                </tr>
+                    
+                            </table>
+                            
+                        </div>
+                    </div>
+    
+          
+     
+       
+    </router-outlet>
+
+</body>
+
+</html>
+
+
+
+

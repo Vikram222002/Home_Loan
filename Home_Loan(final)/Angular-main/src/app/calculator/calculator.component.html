@@ -1,0 +1,101 @@
+
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Montserrat", sans-serif
+    }
+
+    .w3-row-padding img {
+        margin-bottom: 12px;
+        margin-top:110px;
+    }
+
+    /* Set the width of the sidebar to 120px */
+    .w3-sidebar {
+        width: 120px;
+        background: #222;
+    }
+
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {
+        margin-left: 120px
+    }
+
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {
+        #main {
+            margin-left: 0;
+            margin-top: 50px;
+        }
+    }
+</style>
+<div class="w3-padding-large" id="main">
+    <!--CONTENT HERE -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="text-center">
+                        <u style="color: white;"><h1 style="color:white">Eligibility calculator</h1></u>
+                    </div>
+                    <div class="form">
+                        
+                            <div class="mb-3">
+                                <label for="MonthlyIncome">Monthly Income:</label><br>
+                                <input type="number" name="MonthlyIncome" [(ngModel)]="MonthlyIncome"> </div>
+                            <br>
+                            <div class="button">
+                                <button class="btn btn-primary" (click)="Calculateeligibility()">Calculate</button>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Eligibility">Eligibility:</label><br>
+                                <input  type="number" name="Eligibility"  readonly [(ngModel)]="Eligibility">
+                                <br> 
+                           </div>
+                        
+                        <hr color="red">
+                        <div class="text-center">
+                            <u style="color: white;"><h1 style="color:white">EMI Calculator</h1></u>
+                        </div>
+                            
+                                <div class="mb-3">
+                                    <label for="Loan">Loan Amount:</label><br>
+                                    <input type="number" name="Loan" [(ngModel)]="Loan">
+                                    <br>
+                                
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Tenure">Tenure:</label><br>
+                                    <input type="number" name="Tenure" [(ngModel)]="Tenure">
+                                    <br>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="ROI">Rate Of Interest:</label><br>
+                                <input type="number" name="ROI" [(ngModel)]="ROI">
+                                <br>
+                                </div>
+                                <div class="button">
+                                    <button (click)="CalculateEMI()">Calculate</button>
+                                </div>
+                                
+                                
+
+                                <label for="EMI">EMI:</label><br>
+                                <input  type="number" name="EMI" readonly [(ngModel)]="EMI">
+                       
+                            <div class="button1">
+                                <input type="button" value="Go Back" onclick="history.back()">
+                            </div>
+                            
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

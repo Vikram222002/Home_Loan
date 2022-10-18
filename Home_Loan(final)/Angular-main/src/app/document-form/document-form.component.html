@@ -1,0 +1,148 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Montserrat", sans-serif
+        }
+
+        .w3-row-padding img {
+            margin-bottom: 12px
+        }
+
+        /* Set the width of the sidebar to 120px */
+        .w3-sidebar {
+            width: 120px;
+            background: #222;
+        }
+
+        /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+        #main {
+            margin-left: 120px
+        }
+
+        /* Remove margins from "page content" on small screens */
+        @media only screen and (max-width: 600px) {
+            #main {
+                margin-left: 0
+            }
+        }
+    </style>
+</head>
+
+<body class="w3-black">
+
+    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+        <!-- Avatar image in top left corner -->
+    
+        <a routerLink="/userpage/{{Customer.customerId}}" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-home w3-xxlarge"></i>
+            <p>HOME</p>
+        </a> 
+        <a routerLink="" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-sign-out w3-xxlarge"></i>
+            <p>LOGOUT</p>
+        </a>
+        <a routerLink="incomeform/{{Customer.customerId}}" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-address-book-o w3-xxlarge"></i>
+            <p>LOAN APPLICATION</p>
+        </a>
+        <a routerLink="balance/{{Customer.customerId}}" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-balance-scale w3-xxlarge"></i>
+            <p>ACCOUNT BALANCE</p>
+        </a>
+        <a routerLink="applicationStatus/{{Customer.customerId}}" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-bar-chart w3-xxlarge"></i>
+            <p>ACCOUNT STATUS</p>
+        </a>
+    </nav>
+
+   
+    <router-outlet>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="text-center">
+                            <u style="color: white;"><h1 style="color:white">Documents Page</h1></u>
+                        </div>
+                        <div class="form">
+                           
+                                <form #documentform="ngForm" novalidate  (ngSubmit)="onSubmit(documentform)">
+                                <div class="mb-3">
+                                    <label for="customerId">Customer Id *</label>
+                                    <input #custumerId="ngModel" type="number" readonly id="customerId" name="customerId" class="form-control" [(ngModel)]="Customer.customerId">
+                               </div>
+                                <br>
+                                <div class="mb-3">
+                                       <label for="panCard">Pan Card *</label>
+                                        <input #panCard="ngModel" type="file"  id="panCard" name="panCard" class="form-control"   required ngModel >
+                                          <br/><span *ngIf="panCard.invalid && panCard.touched" style="color: red;">Please upload ur Pan Card </span>
+                                  </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="voterId">voter Id *</label><br>
+                                    <input #voterId="ngModel" type="file"  id="voterId" name="voterId" class="form-control"   required ngModel >
+                                    <br/><span *ngIf="voterId.invalid && voterId.touched" style="color: red;">Please upload ur Pan Card </span>
+                                  </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="salarySlip">Salary Slip *</label><br>
+                                    <input #salarySlip="ngModel" type="file"  id="salarySlip" name="salarySlip" class="form-control"   required ngModel >
+                                    <br/><span *ngIf="salarySlip.invalid && salarySlip.touched" style="color: red;">Please upload ur Pan Card </span>
+                                </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="lOA">LOA *</label><br>
+                                    <input #lOA="ngModel" type="file"  id="lOA" name="lOA" class="form-control" ngModel>
+                                    <br/><span *ngIf="lOA.invalid && lOA.touched" style="color: red;">Please upload ur Pan Card </span>
+                                 </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="nOCFromBuilder">NOC From Builder *</label><br>
+                                    <input #nOCFromBuilder="ngModel" type="file" id="nOCFromBuilder" name="nOCFromBuilder" class="form-control"  required ngModel>
+                                    <br/><span *ngIf="nOCFromBuilder.invalid && nOCFromBuilder.touched" style="color: red;">Please upload ur Pan Card </span>
+                              </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="agreementToSale">Agreement To Sale *</label>
+                                    <input #agreementToSale="ngModel" type="file" id="agreementToSale" name="agreementToSale" class="form-control"  required ngModel >
+                                    <br/><span *ngIf="agreementToSale.invalid && agreementToSale.touched" style="color: red;">Please upload ur Pan Card </span>
+                                 </div>
+                                <br>
+                                
+                                <div class="button"> 
+                                <button class="btn btn-primary" [disabled]="documentform.invalid" onclick="OnSubmit(documentform)">Submit</button>
+                                <button class="btn btn-primary" type="button" onclick="history.back()"><a routerLink="userpage">Go back</a></button>
+                            </div>
+                            
+                            
+                            </form>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </router-outlet>
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+
+
+
+<html style="background-color:darkgray; height: 800px;">
+<head>
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Montserrat", sans-serif
+    }
+
+    .w3-row-padding img {
+        margin-bottom: 12px
+    }
+
+    /* Set the width of the sidebar to 120px */
+    .w3-sidebar {
+        width: 120px;
+        background: #222;
+    }
+
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {
+        margin-left: 120px
+    }
+
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {
+        #main {
+            margin-left: 0
+        }
+    }
+</style>
+</head>
+<div class="w3-padding-large" id="main">
+    <!--CONTENT HERE -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="text-center">
+                        <u style="color: white;"><h1 style="color:white">Customer Login Page</h1></u>
+                    </div>
+                    <div class="form">
+                        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+                            <div class="mb-3">
+                                <label for="customerId"  >User ID</label><br>
+                                <input type="text" size="40" name="customerId" ngModel placeholder="Enter Cusomer Id" #customerId="ngModel" >
+                            </div>
+                            <br>
+                            <div class="mb-3">
+                                <label for="password" class="form-control">Password</label><br>
+                                <input type="password" class="form-control" size="40" name="password" ngModel placeholder="Password" #password="ngModel" >
+                            </div>
+                            <br>
+                            <div class="form1"><a routerLink="registration">Create a new account</a></div>
+                            <div class="button">
+                            <button type="submit" value="submit" class="btn btn-primary">Login</button>
+                            <button class="btn btn-primary" type="button" onclick="history.back()">Goback</button>
+                        </div>
+                        
+                        
+                        </form>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

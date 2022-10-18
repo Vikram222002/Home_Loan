@@ -1,0 +1,127 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Montserrat", sans-serif
+        }
+
+        .w3-row-padding img {
+            margin-bottom: 12px
+        }
+
+        /* Set the width of the sidebar to 120px */
+        .w3-sidebar {
+            width: 120px;
+            right: -1em;
+            background: #222;
+        }
+
+        /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+        #main {
+            margin-left: 120px
+        }
+
+        /* Remove margins from "page content" on small screens */
+        @media only screen and (max-width: 600px) {
+            #main {
+                margin-left: 0
+            }
+        }
+    </style>
+</head>
+
+<body class="w3-black">
+
+    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+        <!-- Avatar image in top left corner -->
+        
+        <a routerLink="/userpage/{{Customer.customerId}}" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-home w3-xxlarge"></i>
+            <p>HOME</p>
+        </a> 
+        <a routerLink="" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-sign-out w3-xxlarge"></i>
+            <p>LOGOUT</p>
+        </a>
+            <button class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey"
+             type="button" onclick="history.back()">
+             <i class="fa fa-home w3-xxlarge"></i><p>Home</p></button>
+        
+        <a routerLink="incomeform/{{Customer.customerId}}" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-address-book-o w3-xxlarge"></i>
+            <p>LOAN APPLICATION</p>
+        </a>
+        <a routerLink="balance/{{Customer.customerId}}" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-balance-scale w3-xxlarge"></i>
+            <p>ACCOUNT BALANCE</p>
+        </a>
+        <a routerLink="applicationStatus/{{Customer.customerId}}" class="w3-bar-item w3-button w3-padding-large w3-hover-light-grey">
+            <i class="fa fa-bar-chart w3-xxlarge"></i>
+            <p>ACCOUNT STATUS</p>
+        </a>
+    </nav>
+
+   
+    <router-outlet>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="text-center">
+                            <u style="color: white;"><h1 style="color:white">Loan Amount Details</h1></u>
+                        </div>
+                        <div class="form">  
+                            <form #loanform="ngForm" novalidate  (ngSubmit)="onSubmit(loanform)">
+                                <div class="mb-3">
+                                    <label for="customerId">Customer Id *</label>
+                                    <input #customerId="ngModel" type="number"  readonly id="customerId" name="customerId" class="form-control"  [(ngModel)]="Customer.customerId">
+                                 </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="tenure">Tenure *</label><br>
+                                    <input #Tenure="ngModel" type="number" size="40" id="tenure" name="tenure" class="Ttenure"  required  ngModel  max="10" min="1">
+                                    <br/><span *ngIf="Tenure.invalid && Tenure.touched" style="color: red;">please enter valid Location</span>
+                                  </div>
+                                <br>
+                                <div class="mb-3">
+                                    <label for="loanAmount">Loan Amount *</label><br>
+                                    <input #LoanAmount="ngModel" type="number" size="40" id="loanAmount" name="loanAmount" class="form-control" required  ngModel min="10000" max="1000000">
+                                    <br/><span *ngIf="LoanAmount.invalid && LoanAmount.touched" style="color: red;">Amount is mandatory which should be minimum 10,000</span>
+                                </div>
+                                <br>
+                               
+                                <div class="button">
+                                
+                                <button class="btn btn-primary" [disabled]="loanform.invalid">Submit Application</button>
+                                <button class="btn btn-primary" type="button" onclick="history.back()"><a routerLink="userpage">Go back</a></button>
+                            </div>
+                            
+                            
+                            </form>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </router-outlet>
+
+</body>
+
+</html>
